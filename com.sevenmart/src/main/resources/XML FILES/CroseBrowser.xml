@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="crose browser test" parallel="tests" thread-count="5">
+	<listeners>
+		<listener class-name="com.sevenmart.listeners.ExtentReporter"></listener>
+	</listeners>
+	<test name="running in chrome">
+	<parameter name="browser" value="chrome"></parameter>
+		<classes>
+			<class name="com.sevenmart.tests.AdminUsersTest"></class>
+		</classes>
+
+	</test>
+	<test name="running in edge">
+		<parameter name="browser" value="edge"></parameter>
+		<classes>
+			<class name="com.sevenmart.tests.AdminUsersTest"></class>
+		</classes>
+
+	</test>
+	<test name="running in frefox">
+		<parameter name="browser" value="firefox"></parameter>
+		<classes>
+			<class name="com.sevenmart.tests.AdminUsersTest"></class>
+		</classes>
+
+	</test>
+
+</suite>
+
