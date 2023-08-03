@@ -31,7 +31,7 @@ public class LoginPage {
 	@FindBy(xpath = "//input[@id='remember']")
 	private WebElement rememberMeCheckBox;
 	@FindBy(xpath = "//div[@class='alert alert-danger alert-dismissible']")
-	private WebElement errorMessage;
+	private WebElement error_Message;
 
 	public LoginPage(WebDriver driver) {
 		PageFactory.initElements(driver, this);
@@ -63,7 +63,7 @@ public class LoginPage {
 
 	public String getErrorMessage() {
 		generalutility = new GeneralUtility(driver);
-		return generalutility.getTextOfElement(errorMessage);
+		return generalutility.getTextOfElement(error_Message);
 	}
 
 	public void login() {
