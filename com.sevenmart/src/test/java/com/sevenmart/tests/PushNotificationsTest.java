@@ -1,5 +1,6 @@
 package com.sevenmart.tests;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.sevenmart.base.Base;
@@ -7,31 +8,34 @@ import com.sevenmart.pages.LoginPage;
 import com.sevenmart.pages.PushNotificationsPage;
 import com.sevenmart.utilities.ExcelUtility;
 
-
-
 public class PushNotificationsTest extends Base {
 	PushNotificationsPage pushnotificationpage;
 	LoginPage loginpage;
 	ExcelUtility excelutility = new ExcelUtility();
 
 	@Test
-	public void verifyPushNotificationLinkHit() {
+	public void verifyPushNotificationInformationLink() {
 		loginpage = new LoginPage(driver);
 		pushnotificationpage = new PushNotificationsPage(driver);
 		loginpage.login();
-		pushnotificationpage.hitOnPushNotificationLink();
+		pushnotificationpage.clickOnPushNotificationLink();
+		String actual=pushnotificationpage.pageHeading();
+		String expected="Push Notifications";
+		Assert.assertEquals(actual, expected, "Heading mismatch");
 	}
+	
 	@Test
 	public void verify_EnterStringOnTitleAndDescription() {
 		loginpage = new LoginPage(driver);
 		pushnotificationpage = new PushNotificationsPage(driver);
-		verifyPushNotificationLinkHit();
-		excelutility.setExcelFile("LoginData","InvalidLoginCredentials");
-		String titleMessage=excelutility.getCellData(0, 0);
-		String descriptionMessage=excelutility.getCellData(0, 1);
-		pushnotificationpage.passValuesOnTitleAndDescription(titleMessage, descriptionMessage);
-		
+		loginpage.login();
+		excelutility.setExcelFile("PushNotificationData","TitleAndDescription");
+		String titleText=excelutility.getCellData(1, 0);
+		String descriptionText=excelutility.getCellData(1, 1);
+		pushnotificationpage.enterTitleAndDescription(titleText, descriptionText);	
+		String actual=pushnotificationpage.getAlertMessage();
+		String actualErrorMessage=actual.substring(9);
+		String expectedErrorMessage="Message send successfully";
+		Assert.assertEquals(actualErrorMessage, expectedErrorMessage, "Alert message mismatch");
 	}
-	
-
 }

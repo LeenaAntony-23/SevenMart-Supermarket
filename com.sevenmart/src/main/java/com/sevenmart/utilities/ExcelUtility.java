@@ -20,7 +20,7 @@ public class ExcelUtility {
 			String path = Constants.EXCEL_FILE_PATH + workBookName + ".xlsx";
 			File src = new File(path);
 			FileInputStream fileinputstream = new FileInputStream(src);
-			workbook = new XSSFWorkbook(fileinputstream);// initializing work book
+			workbook = new XSSFWorkbook(fileinputstream);
 			sheet = workbook.getSheet(sheetName);
 
 		} catch (Exception e) {
@@ -45,7 +45,7 @@ public class ExcelUtility {
 		}
 
 		default:
-			return null;// to avoid return type error
+			return null;
 		}
 
 	}

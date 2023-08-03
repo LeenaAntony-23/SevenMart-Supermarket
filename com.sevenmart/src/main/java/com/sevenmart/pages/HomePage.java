@@ -12,14 +12,16 @@ public class HomePage {
 	GeneralUtility generalutility;
 	
 	@FindBy (xpath="//div[@class='user-panel mt-3 pb-3 mb-3 d-flex']/div[@class='info']")
-	private WebElement profileNameElement;
+	private WebElement profileName;
+	
 	public HomePage(WebDriver driver) {
 		this.driver=driver;
 		PageFactory.initElements(driver,this);
 	}
+	
 	public String getProfileName() {
 		generalutility=new GeneralUtility(driver);
-		return generalutility.getTextOfElement(profileNameElement);
+		return generalutility.getTextOfElement(profileName);
 	}
 
 }

@@ -16,19 +16,21 @@ import com.sevenmart.utilities.WaitUtility;
 public class LoginPage {
 	WebDriver driver;
 	GeneralUtility generalutility;
-	HomePage homepage;
-	Properties properties = new Properties();// java inbuilt class for reading files in keyvalue pair.
-	FileInputStream fileinputstream;// file read
 	WaitUtility waitutility;
-	@FindBy(xpath = "//input[@class='form-control' and @placeholder='Username']")
+	Properties properties = new Properties();
+
+	HomePage homepage;
+	FileInputStream fileinputstream;
+
+	@FindBy(xpath = "//input[@name='username']")
 	private WebElement userNameField;
-	@FindBy(xpath = "//input[@class='form-control' and @placeholder='Password']")
+	@FindBy(xpath = "//input[@name='password']")
 	private WebElement passwordField;
-	@FindBy(xpath = "//button[contains(text(),'Sign In')]")
+	@FindBy(xpath = "//button[@type='submit']")
 	private WebElement signInButton;
 	@FindBy(xpath = "//input[@id='remember']")
 	private WebElement rememberMeCheckBox;
-	@FindBy(xpath = "//div/h5")
+	@FindBy(xpath = "//div[@class='alert alert-danger alert-dismissible']")
 	private WebElement errorMessage;
 
 	public LoginPage(WebDriver driver) {
@@ -45,7 +47,6 @@ public class LoginPage {
 
 	public void enterUserName(String userName) {
 		userNameField.sendKeys(userName);
-
 	}
 
 	public void enterPassWord(String passWord) {
@@ -54,36 +55,28 @@ public class LoginPage {
 
 	public void checkRememberMeCheckBox() {
 		rememberMeCheckBox.click();
-	} 
+	}
 
 	public void clickOnSignInButton() {
-//		waitutility=new WaitUtility(driver);
-//		waitutility.waitForClickable(signInButton);
 		signInButton.click();
-	}
-
-	public void login() {
-		String userName = properties.getProperty("username");// getting username and password from config file
-		String passWord = properties.getProperty("password");
-		enterUserName(userName);// calling function
-		enterPassWord(passWord);
-		clickOnSignInButton();
-	}
-
-	public void login(String userName, String passWord) {
-		enterUserName(userName);// calling function
-		enterPassWord(passWord);
-		clickOnSignInButton();
 	}
 
 	public String getErrorMessage() {
 		generalutility = new GeneralUtility(driver);
 		return generalutility.getTextOfElement(errorMessage);
 	}
-	public void AdminUserlogin() {
-		login();
-		
-		
+
+	public void login() {
+		String userName = properties.getProperty("username");
+		String password = properties.getProperty("password");
+		enterUserName(userName);
+		enterPassWord(password);
+		clickOnSignInButton();
 	}
 
+	public void login(String userName, String passWord) {
+		enterUserName(userName);
+		enterPassWord(passWord);
+		clickOnSignInButton();
+	}
 }
