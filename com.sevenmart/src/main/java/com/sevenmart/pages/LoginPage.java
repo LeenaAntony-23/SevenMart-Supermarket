@@ -75,6 +75,7 @@ public class LoginPage {
 	}
 
 	public void login(String userName, String passWord) {
+		//using parameter
 		enterUserName(userName);
 		enterPassWord(passWord);
 		clickOnSignInButton();
