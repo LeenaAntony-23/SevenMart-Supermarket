@@ -83,6 +83,10 @@ public class PageUility {
 		javascriptexecutor=(JavascriptExecutor) driver;
 		javascriptexecutor.executeScript("arguments[0].scrollIntoView();",element);
 	}
+	public void javaScriptScrollandclick(WebElement element) {
+		javascriptexecutor = (JavascriptExecutor) driver;
+		javascriptexecutor.executeScript("arguments[0].click();", element);
+	}
 	
 
 }

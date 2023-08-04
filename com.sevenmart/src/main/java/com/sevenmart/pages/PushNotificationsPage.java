@@ -13,21 +13,22 @@ public class PushNotificationsPage {
 	WebDriver driver;
 	Properties properties = new Properties();
 	GeneralUtility generalutility;
-	
+
 	@FindBy(xpath = "//i[@class='nav-icon fas fa-fas fa-bell']")
 	private WebElement PushNotification;
-	@FindBy(xpath="//input[@id='title']")
+	@FindBy(xpath = "//input[@id='title']")
 	private WebElement titleField;
-	@FindBy(xpath="//input[@id='description']")
+	@FindBy(xpath = "//input[@id='description']")
 	private WebElement descriptionField;
-	@FindBy(xpath="//button[@name='create']")
+	@FindBy(xpath = "//button[@name='create']")
 	private WebElement saveButton;
-	@FindBy(xpath="//h1")
+	@FindBy(xpath = "//h1")
 	private WebElement heading;
-	@FindBy(xpath="//div[@class='alert alert-success alert-dismissible']")
-	private WebElement AlertMessage;
-	
-	
+	@FindBy(xpath = "//div[@class='alert alert-success alert-dismissible']")
+	private WebElement alertMessage;
+	@FindBy(xpath = "//a[@class='btn btn-default btn-fix']")
+	private WebElement resetButton;
+
 	public PushNotificationsPage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
@@ -36,36 +37,49 @@ public class PushNotificationsPage {
 	public void clickOnPushNotificationLink() {
 		PushNotification.click();
 	}
-	
+
 	public void enterTitle(String titleText) {
 		titleField.sendKeys(titleText);
 	}
-	
+
 	public void enterDescription(String descriptionText) {
 		descriptionField.sendKeys(descriptionText);
 	}
-	
+
 	public void clickOnSaveButton() {
 		saveButton.click();
 	}
-	
-	public String pageHeading()
-	{
-		generalutility=new GeneralUtility(driver);
+
+	public String pageHeading() {
+		generalutility = new GeneralUtility(driver);
 		return generalutility.getTextOfElement(heading);
 	}
-	
-	public String getAlertMessage()
-	{
-		generalutility=new GeneralUtility(driver);
-		return generalutility.getTextOfElement(AlertMessage);
+
+	public String getAlertMessage() {
+		generalutility = new GeneralUtility(driver);
+		return generalutility.getTextOfElement(alertMessage);
 	}
-	
-	public void enterTitleAndDescription(String titleText,String descriptionText) {
+
+	public void clickOnResetButton() {
+		resetButton.click();
+	}
+
+	public String checkTitleAndDescriptionAfterClickOnReset() {
+		generalutility = new GeneralUtility(driver);
+		return generalutility.getTextOfElement(titleField);
+	}
+
+	public void enterTitleAndDescription(String titleText, String descriptionText) {
 		clickOnPushNotificationLink();
 		enterTitle(titleText);
 		enterDescription(descriptionText);
 		clickOnSaveButton();
 	}
 
+	public void checkResetButton(String titleText, String descriptionText) {
+		clickOnPushNotificationLink();
+		enterTitle(titleText);
+		enterDescription(descriptionText);
+		clickOnResetButton();
+	}
 }

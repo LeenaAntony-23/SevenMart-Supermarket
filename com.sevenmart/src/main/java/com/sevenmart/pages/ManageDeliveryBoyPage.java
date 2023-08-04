@@ -8,6 +8,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import java.util.ArrayList;
+
+import com.sevenmart.utilities.ExcelUtility;
 import com.sevenmart.utilities.GeneralUtility;
 import com.sevenmart.utilities.PageUility;
 import com.sevenmart.utilities.WaitUtility;
@@ -18,219 +20,218 @@ public class ManageDeliveryBoyPage {
 	LoginPage loginpage;
 	GeneralUtility generalutility;
 	PageUility pageutility;
+	ExcelUtility excelutility =new ExcelUtility();
+	
 	@FindBy(xpath = "//i[@class='nav-icon fas fa-user-plus']")
-	private WebElement manageDeliveryBoy_Link;
-	@FindBy(xpath = "//li[@class='breadcrumb-item active']")
-	private WebElement deliveryBoyPageConfirmElement;
-	@FindBy(xpath = "//a[@class='btn btn-rounded btn-danger']")
-	private WebElement newDeliveryBoyCreateButton;
+	private WebElement manageDeliveryBoyLink;
+	@FindBy(xpath = "//div[@class='col-sm-12']/a[1]")
+	private WebElement newButton;
 	@FindBy(xpath = "//input[@id='name']")
-	private WebElement namefield;
+	private WebElement nameField;
 	@FindBy(xpath = "//input[@id='email']")
-	private WebElement emailfield;
+	private WebElement emailField;
 	@FindBy(xpath = "//input[@id='phone']")
-	private WebElement phone;
+	private WebElement phoneNumberField;
 	@FindBy(xpath = "//textarea[@id='address']")
-	private WebElement address;
+	private WebElement addressField;
 	@FindBy(xpath = "//input[@id='username']")
-	private WebElement username;
+	private WebElement usernameField;
 	@FindBy(xpath = "//input[@id='password']")
-	private WebElement password;
+	private WebElement passwordField;
 	@FindBy(xpath = "//button[@name='create']")
-	private WebElement savebutton;
+	private WebElement saveButton;
+	@FindBy(xpath = "//h1")
+	private WebElement deliveryBoyPageHeading;
 	@FindBy(xpath = "//div[contains(@class,'alert-success ')]")
-	private WebElement successAlert;
-	@FindBy(xpath = "//div[@class='alert alert-danger alert-dismissible']//h5")
-	private WebElement userNameAlreadyExistAlert;
-	@FindBy(xpath = "//a[@href='htts://groceryapp.uniqassosiates.com/admin/list-deliveryboy' and @type='button']")
-	private WebElement cancelButton;
-	@FindBy(xpath = "//a[@onclick='click_button(2)']")
+	private WebElement successAlert; 
+	@FindBy(xpath = "//div[@class='col-sm-12']/a[2]")
 	private WebElement searchButton;
 	@FindBy(xpath = "//input[@id='un']")
-	private WebElement searchWithName;
-	@FindBy(xpath = "//input[@id='ut']")
-	private WebElement searchWithEmail;
-	@FindBy(xpath = "//button[@type='submit']")
-	private WebElement tableSearchButton;
-	@FindBy(xpath = "//a[@class='btn btn-rounded btn-warning']")
-	private WebElement resetButton;
-	@FindBy(xpath = "//tbody/tr[1]/td[2]")
-	private WebElement searchedDeliveryBoyEmailFromTable;
-	@FindBy(xpath = "//tbody/tr/td/span[@id='res']/center")
-	private WebElement resultNotFound;
-	@FindBy(xpath="//tbody/tr/td[5]")
-	private List<WebElement> userNamesFromTable;
-
+	private WebElement searchByNameField;
+	@FindBy(xpath = "//button[@name='Search']")
+	private WebElement searchListSearchButton;
+	@FindBy(xpath = "//table/tbody/tr[1]/td[1]")
+	private WebElement searchResultName; 
+	@FindBy(xpath = "//table/tbody")
+	private WebElement searchResultNotFound; 
+	@FindBy(xpath = "//table/tbody/tr/td[8]/a[1]")
+	private WebElement editDeliveryBoyDetailsLink;
+	@FindBy(xpath = "//button[@name='update']")
+	private WebElement updateButton; 
+	@FindBy(xpath = "//div[@class='alert alert-success alert-dismissible']")
+	private WebElement updatedAlert;
+	
 	public ManageDeliveryBoyPage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
-
-	public void hit_ManageDeliveryBoyLink() {
-		manageDeliveryBoy_Link.click();
+	
+	public void clickOnManageDeliveryBoyLink()
+	{
+		manageDeliveryBoyLink.click();
 	}
-
-	public void clickOnCreateNewDeliveryBoyButton() {
-		newDeliveryBoyCreateButton.click();
+	
+	public void clickOnNewButton()
+	{
+		newButton.click();
 	}
-
-	public String validatingDeliveryBoyPage() {
-		generalutility = new GeneralUtility(driver);
-		return generalutility.getTextOfElement(deliveryBoyPageConfirmElement);
+	
+	public void enterName(String name)
+	{
+		nameField.sendKeys(name);
 	}
-
-	public void enterName(String name) {
-		namefield.sendKeys(name);
-
+	
+	public void enterEmailID(String email)
+	{
+		emailField.sendKeys(email);
 	}
-
-	public void enterEmail(String email) {
-		emailfield.sendKeys(email);
+	
+	public void enterPhoneNumber(String phone)
+	{
+		phoneNumberField.sendKeys(phone);
 	}
-
-	public void enterPhoneNumber(String number) {
-		phone.sendKeys(number);
+	
+	public void enterAddress(String address)
+	{
+		addressField.sendKeys(address);
 	}
-
-	public void enterAddress(String addressdetails) {
-		address.sendKeys(addressdetails);
+	
+	public void enterUserName(String username)
+	{
+		usernameField.sendKeys(username);
 	}
-
-	public void enterUsername(String userName) {
-		username.sendKeys(userName);
+	
+	public void enterPassword(String password)
+	{
+		passwordField.sendKeys(password);
 	}
-
-	public void enterPassword(String passWord) {
-		password.sendKeys(passWord);
+	
+	public void clickOnSaveButton()
+	{
+		saveButton.submit();
 	}
-
-	public void scrollToSaveButtonElement() {
-		pageutility = new PageUility(driver);
-		pageutility.javaScriptExecutorClick(savebutton);
-	}
-
-	public void saveNewDeliveryBoyDetails() {
-
-		savebutton.click();
-	}
-
-	public String succesAlertMessage() {
-		generalutility = new GeneralUtility(driver);
-		return generalutility.getTextOfElement(successAlert);
-
-	}
-
-	public String userNameAlreadyExistAlertMessage() {
-		generalutility = new GeneralUtility(driver);
-		return generalutility.getTextOfElement(userNameAlreadyExistAlert);
-
-	}
-
-	public void clickOnSearchButton() {
+	
+	public void clickOnSearchButton()
+	{
 		searchButton.click();
 	}
-
-	public void searchByName(String existingName) {
-		searchWithName.sendKeys(existingName);
+	
+	public void clickOnSearchListSearchButton()
+	{
+		searchListSearchButton.click();
 	}
-
-	public void searchByEmail(String existingEmail) {
-		searchWithEmail.sendKeys(existingEmail);
+	
+	public void searchByName(String searchName)
+	{
+		 searchByNameField.sendKeys(searchName);
 	}
-
-	public void searchButtonClickOnFindingExistingDeliveryBoy() {
-		tableSearchButton.click();
+	
+	public void clickOnEditDeliveryBoyButton()
+	{
+		editDeliveryBoyDetailsLink.click();
 	}
-
-	public String getEmailOfSearchedDeliveryBoyFromTable() {
-		generalutility = new GeneralUtility(driver);
-		return generalutility.getTextOfElement(searchedDeliveryBoyEmailFromTable);
+	public void clickOnUpdateButton()
+	{
+			pageutility=new PageUility(driver);
+			pageutility.javaScriptExecutorScrollToElement(updateButton);
+			updateButton.submit();
 	}
-
-	public String noResultFoundGetText() {
-		generalutility = new GeneralUtility(driver);
-		return generalutility.getTextOfElement(resultNotFound);
+	
+	public String getUpdatedAlert()
+	{
+		generalutility=new GeneralUtility(driver);
+		return generalutility.getTextOfElement(updatedAlert);
 	}
-	public void HitOnManageDeliveryBoyPage() {
-		loginpage = new LoginPage(driver);
-		loginpage.login();
-		hit_ManageDeliveryBoyLink();
-		
-
+	
+	public String checkSearchResultName()
+	{
+		pageutility=new PageUility(driver);
+		pageutility.javaScriptExecutorScrollToElement(searchResultName);
+		generalutility=new GeneralUtility(driver);
+		return generalutility.getTextOfElement(searchResultName);
 	}
-	public void test() {
-		hit_ManageDeliveryBoyLink();
-		
+	
+	public String checkSearchResultNotFound()
+	{
+		pageutility=new PageUility(driver);
+		pageutility.javaScriptExecutorScrollToElement(searchResultNotFound);
+		generalutility=new GeneralUtility(driver);
+		return generalutility.getTextOfElement(searchResultNotFound);
 	}
-	public String getSuccesAlertText() {
-		generalutility = new GeneralUtility(driver);
+	
+	public String getSuccessAlert()
+	{
+		generalutility=new GeneralUtility(driver);
 		return generalutility.getTextOfElement(successAlert);
 	}
-	public String searchNewlyAddedDeliveryBoyInTableByUserName(String expectedUserName) {
-		for(WebElement iter:userNamesFromTable) {
-			ArrayList<String> userNameValues=new ArrayList<String>();
-			String actualUsername=iter.getText();
-			userNameValues.add(actualUsername);
-			if(actualUsername.contains(expectedUserName)) {
-				System.out.println("The searched user is found");
-			}
-			}
-		return expectedUserName;
+	
+	public String getHeadingOfManageDeliveryBoyPage()
+	{
+		generalutility=new GeneralUtility(driver);
+		return generalutility.getTextOfElement(deliveryBoyPageHeading);
 	}
-
-	public void AlreadyExistingUserNameAlert(String name, String mail, String phone, String address, String username,
-			String password) {
-		loginpage = new LoginPage(driver);
-
+	
+	public void manageDeliveryBoyPageHeading()
+	{
+		loginpage=new LoginPage(driver);
 		loginpage.login();
-		hit_ManageDeliveryBoyLink();
-		clickOnCreateNewDeliveryBoyButton();
+		clickOnManageDeliveryBoyLink();
+	}
+	
+	public void createNewDeliveryBoy(String name,String email,String phoneNumber,String address,String userName,String passsword)
+	{
+		loginpage=new LoginPage(driver);
+		loginpage.login();
+		clickOnManageDeliveryBoyLink();
+		clickOnNewButton();
+		excelutility.setExcelFile("DeliveryBoyData", "NewDeliveryBoy");
+		name = excelutility.getCellData(1, 0);
+		email= excelutility.getCellData(1, 1);
+		phoneNumber= excelutility.getCellData(1, 2);
+		address= excelutility.getCellData(1, 3);
+		userName= excelutility.getCellData(1, 4);
+		passsword= excelutility.getCellData(1, 5);
 		enterName(name);
-		enterEmail(mail);
-		enterPhoneNumber(phone);
+		enterEmailID(email);
+		enterPhoneNumber(phoneNumber);
 		enterAddress(address);
-		enterUsername(username);
-		enterPassword(password);
-		scrollToSaveButtonElement();
-
+		enterUserName(userName);
+		enterPassword(passsword);
+		clickOnSaveButton();
 	}
-
-	public void CreateNewDeliveryBoys(String name, String mail, String phone, String address, String username,
-			String password) {
-		loginpage = new LoginPage(driver);
-
+	
+	public void searchExistingDeliveryBoy()
+	{
+		loginpage=new LoginPage(driver);
 		loginpage.login();
-		hit_ManageDeliveryBoyLink();
-		clickOnCreateNewDeliveryBoyButton();
-		enterName(name);
-		enterEmail(mail);
-		enterPhoneNumber(phone);
-		enterAddress(address);
-		enterUsername(username);
-		enterPassword(password);
-		scrollToSaveButtonElement();
-		getSuccesAlertText();
-	}
-
-	public void SearchingExistingDeliveryBoy(String existingName, String existingEmail) {
-		loginpage = new LoginPage(driver);
-
-		loginpage.login();
-		hit_ManageDeliveryBoyLink();
+		clickOnManageDeliveryBoyLink();
 		clickOnSearchButton();
-		searchByName(existingName);
-		searchByEmail(existingEmail);
-		searchButtonClickOnFindingExistingDeliveryBoy();
-
+		excelutility.setExcelFile("DeliveryBoyData", "SearchExistingDeliveryBoy");
+		String name = excelutility.getCellData(1, 0);
+		searchByName(name);
+		clickOnSearchListSearchButton();
 	}
-	public void ResultNotFoundForNonExistingDeliveryBoy(String existingName, String existingEmail) {
-		loginpage = new LoginPage(driver);
+	public void searchNonExistingDeliveryBoy()
+	{
+		loginpage=new LoginPage(driver);
 		loginpage.login();
-		hit_ManageDeliveryBoyLink();
+		clickOnManageDeliveryBoyLink();
 		clickOnSearchButton();
-		searchByName(existingName);
-		searchByEmail(existingEmail);
-		searchButtonClickOnFindingExistingDeliveryBoy();
+		excelutility.setExcelFile("DeliveryBoyData", "SearchNonExistingDeliveryBoy");
+		String name = excelutility.getCellData(1, 0);
+		searchByName(name);
+		clickOnSearchListSearchButton();
 		
+	}
+	public void editDeliveryBoyName()
+	{
+		loginpage=new LoginPage(driver);
+		loginpage.login();
+		clickOnManageDeliveryBoyLink();
+		clickOnEditDeliveryBoyButton();
+		excelutility.setExcelFile("DeliveryBoyData", "SearchExistingDeliveryBoy");
+		String name = excelutility.getCellData(1, 0);
+		enterName(name);
+		clickOnUpdateButton();
 	}
 }
