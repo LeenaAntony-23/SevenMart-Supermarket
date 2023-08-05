@@ -6,9 +6,9 @@
       <class name="com.sevenmart.tests.ManageDeliveryBoyTest">
         <methods>
           <include name="terminateSession"/>
-          <include name="verify_editDeliveryBoyDetails"/>
           <include name="launchBrowser"/>
           <include name="launchBrowser"/>
+          <include name="verify_deleteDeliveryBoyDetails"/>
         </methods>
       </class> <!-- com.sevenmart.tests.ManageDeliveryBoyTest -->
     </classes>

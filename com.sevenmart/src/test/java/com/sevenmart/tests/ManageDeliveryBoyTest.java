@@ -45,7 +45,7 @@ public class ManageDeliveryBoyTest extends Base {
 		excelutility.setExcelFile("DeliveryBoyData", "SearchExistingDeliveryBoy");
 		String expectedname = excelutility.getCellData(1, 0);
 		String actualname = managedeliveryboypage.checkSearchResultName();
-		Assert.assertEquals(actualname, expectedname);
+		Assert.assertEquals(actualname, expectedname, "Delivery Boy is not found");
 	}
 
 	/*@Test(dataProvider = "ExistingDeliveryBoyNameAndEmail", dataProviderClass = DeliveryBoyDataProvider.class, groups = "regression")
@@ -62,15 +62,24 @@ public class ManageDeliveryBoyTest extends Base {
 		excelutility.setExcelFile("DeliveryBoyData", "SearchNonExistingDeliveryBoy");
 		String actualname = managedeliveryboypage.checkSearchResultNotFound();
 		String expectedname =".........RESULT NOT FOUND.......";
-		Assert.assertEquals(actualname, expectedname);
+		Assert.assertEquals(actualname, expectedname, "Delivery Boy is found");
 	}
-	@Test(dataProvider = "existingDeliveryBoyExcel", dataProviderClass = DeliveryBoyDataProvider.class)
+	@Test
 	public void verify_editDeliveryBoyDetails() {
 		managedeliveryboypage = new ManageDeliveryBoyPage(driver);
-		managedeliveryboypage.editDeliveryBoyName();
+		managedeliveryboypage.editDeliveryBoyName("Aswathi");
 		String actual = managedeliveryboypage.getUpdatedAlert();
 		String actualAlert=actual.substring(9);
 		String expectedAlert ="Delivery Boy Informations Updated Successfully";
-		Assert.assertEquals(actualAlert, expectedAlert);
+		Assert.assertEquals(actualAlert, expectedAlert, "Delivery Boy Informations not Updated");
+	}
+	@Test
+	public void verify_deleteDeliveryBoyDetails() {
+		managedeliveryboypage = new ManageDeliveryBoyPage(driver);
+		managedeliveryboypage.deleteDeliveryBoyName("Aswathi");
+		String actual = managedeliveryboypage.getDeletedAlert();
+		String actualAlert=actual.substring(9);
+		String expectedAlert ="Delivery Boy Informations Deleted Successfully";
+		Assert.assertEquals(actualAlert, expectedAlert, "Delivery Boy Informations not Deleted");
 	}
 }
