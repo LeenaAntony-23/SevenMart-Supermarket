@@ -3,7 +3,6 @@ package com.sevenmart.base;
 import java.io.FileInputStream;
 import java.time.Duration;
 import java.util.Properties;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -12,18 +11,15 @@ import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
-
-import com.beust.jcommander.Parameter;
 import com.sevenmart.constants.Constants;
 import com.sevenmart.utilities.ScreenShotsUtility;
 import com.sevenmart.utilities.WaitUtility;
-
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class Base {
 	public WebDriver driver;
-	Properties properties = new Properties();// java inbuilt class for reading files in keyvalue pair.
-	FileInputStream fileinputstream;// file read
+	Properties properties = new Properties();
+	FileInputStream fileinputstream;
 	ScreenShotsUtility screenshotsutility = new ScreenShotsUtility();
 
 	/** Initializing config.properties file **/
@@ -56,13 +52,14 @@ public class Base {
 		driver.manage().deleteAllCookies();
 	}
 
-	@BeforeMethod(enabled = true,alwaysRun = true)
+	@BeforeMethod(enabled = true, alwaysRun = true)
 	public void launchBrowser() {
 		String url = properties.getProperty("url");
 		String browser = properties.getProperty("browser");
 		initialize(browser, url);
 
 	}
+
 	@Parameters("browser")
 	@BeforeMethod(enabled = false)
 	public void launchBrowser(String browser) {
@@ -77,8 +74,6 @@ public class Base {
 			screenshotsutility.takeScreenShot(driver, itestresult.getName());
 
 		}
-		//driver.quit();
-
+		// driver.quit();
 	}
-
 }

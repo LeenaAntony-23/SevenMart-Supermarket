@@ -1,21 +1,20 @@
 package com.sevenmart.pages;
 
 import java.util.Properties;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
 import com.sevenmart.utilities.GeneralUtility;
 
 public class PushNotificationsPage {
 	WebDriver driver;
 	Properties properties = new Properties();
 	GeneralUtility generalutility;
+	LoginPage loginpage;
 
 	@FindBy(xpath = "//i[@class='nav-icon fas fa-fas fa-bell']")
-	private WebElement PushNotification;
+	private WebElement PushNotificationLink;
 	@FindBy(xpath = "//input[@id='title']")
 	private WebElement titleField;
 	@FindBy(xpath = "//input[@id='description']")
@@ -35,7 +34,7 @@ public class PushNotificationsPage {
 	}
 
 	public void clickOnPushNotificationLink() {
-		PushNotification.click();
+		PushNotificationLink.click();
 	}
 
 	public void enterTitle(String titleText) {
@@ -50,7 +49,11 @@ public class PushNotificationsPage {
 		saveButton.click();
 	}
 
-	public String pageHeading() {
+	public void clickOnResetButton() {
+		resetButton.click();
+	}
+
+	public String getPageHeading() {
 		generalutility = new GeneralUtility(driver);
 		return generalutility.getTextOfElement(heading);
 	}
@@ -60,16 +63,14 @@ public class PushNotificationsPage {
 		return generalutility.getTextOfElement(alertMessage);
 	}
 
-	public void clickOnResetButton() {
-		resetButton.click();
-	}
-
 	public String checkTitleAndDescriptionAfterClickOnReset() {
 		generalutility = new GeneralUtility(driver);
 		return generalutility.getTextOfElement(titleField);
 	}
 
 	public void enterTitleAndDescription(String titleText, String descriptionText) {
+		loginpage = new LoginPage(driver);
+		loginpage.login();
 		clickOnPushNotificationLink();
 		enterTitle(titleText);
 		enterDescription(descriptionText);
@@ -77,9 +78,17 @@ public class PushNotificationsPage {
 	}
 
 	public void checkResetButton(String titleText, String descriptionText) {
+		loginpage = new LoginPage(driver);
+		loginpage.login();
 		clickOnPushNotificationLink();
 		enterTitle(titleText);
 		enterDescription(descriptionText);
 		clickOnResetButton();
+	}
+
+	public void PushNotificationPageHeading() {
+		loginpage = new LoginPage(driver);
+		loginpage.login();
+		clickOnPushNotificationLink();
 	}
 }

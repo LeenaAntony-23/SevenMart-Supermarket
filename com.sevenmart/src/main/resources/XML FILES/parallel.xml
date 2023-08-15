@@ -4,19 +4,19 @@
 	<listeners>
 		<listener class-name="com.sevenmart.listeners.ExtentReporter"></listener>
 	</listeners>
-	<test name="test_1">
+	<test name="RegressionTest">
 		<classes>
 			<class name="com.sevenmart.tests.AdminUsersTest"></class>
 		</classes>
 
 	</test>
-	<test name="test_2">
+	<test name="SanityTest">
 		<classes>
 			<class name="com.sevenmart.tests.LoginTest"></class>
 		</classes>
 
 	</test>
-	<test name="test_3">
+	<test name="Smoke Test">
 		<classes>
 			<class name="com.sevenmart.tests.ManageDeliveryBoyTest"></class>
 		</classes>

@@ -2,7 +2,6 @@ package com.sevenmart.tests;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
 import com.sevenmart.base.Base;
 import com.sevenmart.pages.HomePage;
 import com.sevenmart.pages.LoginPage;
@@ -15,7 +14,7 @@ public class LoginTest extends Base {
 	ExcelUtility excelutility = new ExcelUtility();
 
 	@Test(priority = 1)
-	public void verify_AdminUserProfileNameForValidLogin() {
+	public void verify_AdminUserProfileName() {
 		loginpage = new LoginPage(driver);
 		homepage = new HomePage(driver);
 		loginpage.login();
@@ -24,8 +23,8 @@ public class LoginTest extends Base {
 		Assert.assertEquals(actualProfileName, expectedProfileName, "Profile Name Mismatch");
 	}
 
-	@Test
-	public void verify_invalidLoginAlertMessage() {
+	@Test(groups = "smoke")
+	public void verify_invalidLoginAlertMessageUsingExcel() {
 		loginpage = new LoginPage(driver);
 		excelutility.setExcelFile("LoginData", "InvalidLoginCredentials");
 		String invalidUserName = excelutility.getCellData(1, 0);
@@ -34,16 +33,13 @@ public class LoginTest extends Base {
 		String actual = loginpage.getErrorMessage();
 		String actualErrorMessage = actual.substring(9);
 		String expectedErrorMessage = "Invalid Username/Password";
-		Assert.assertEquals(actualErrorMessage, expectedErrorMessage, "Invalid alert message");
+		Assert.assertEquals(actualErrorMessage, expectedErrorMessage, "Incorrect alert message");
 	}
 
-	@Test(dataProvider = "InvalidCredentials", dataProviderClass = TestDataProviders.class)
-	public void verify_invalidLoginsAlertMessageUsingDataProvider(String invalidUserName, String invalidPassword) {
+	@Test( groups = "smoke")
+	public void verify_CheckboxwithoutLogin() {
 		loginpage = new LoginPage(driver);
-		loginpage.login(invalidUserName, invalidPassword);
-		String actual = loginpage.getErrorMessage();
-		String actualErrorMessage = actual.substring(9);
-		String expectedErrorMessage = "Invalid Username/Password";
-		Assert.assertEquals(actualErrorMessage, expectedErrorMessage, "Invalid alert message");
+		loginpage.checkboxWithoutLogin();
+		Assert.assertFalse(loginpage.selectCheckbox(), "Checkbox is checked by default");
 	}
 }

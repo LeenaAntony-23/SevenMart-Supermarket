@@ -13,16 +13,18 @@ public class DeliveryBoyDataProvider {
 		Object data[][] = excelutility.getMultiDimensionalData(1, 6);
 		return data;
 	}
+	
 	@DataProvider(name = "existingDeliveryBoyExcel")
 	public Object[][] existingDeliveryBoyProfile() {
 		excelutility.setExcelFile("DeliveryBoyData", "SearchExistingDeliveryBoy");
-		Object data[][] = excelutility.getMultiDimensionalData(1, 0);
+		Object data[][] = excelutility.getMultiDimensionalData(1, 1);
 		return data;
 	}
+	
 	@DataProvider(name = "nonExistingDeliveryBoyExcel")
 	public Object[][] nonExistingDeliveryBoyProfile() {
 		excelutility.setExcelFile("DeliveryBoyData", "SearchNonExistingDeliveryBoy");
-		Object data[][] = excelutility.getMultiDimensionalData(1, 0);
+		Object data[][] = excelutility.getMultiDimensionalData(1, 1);
 		return data;
 	}
 

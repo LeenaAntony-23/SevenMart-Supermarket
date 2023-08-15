@@ -1,4 +1,4 @@
-package com.sevenmart.utilities;
+   package com.sevenmart.utilities;
 
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -37,8 +37,6 @@ public class PageUility {
 		actions.moveToElement(element).build().perform();
 	}
 
-	// alert accept,cancel,javascript nte gettext, drag and drop, click,context
-	// click,double click
 	public void acceptAlert() {
 		driver.switchTo().alert().accept();
 	}

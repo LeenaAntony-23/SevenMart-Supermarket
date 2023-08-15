@@ -2,13 +2,11 @@ package com.sevenmart.pages;
 
 import java.io.FileInputStream;
 import java.util.Properties;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.Assert;
-
 import com.sevenmart.constants.Constants;
 import com.sevenmart.utilities.GeneralUtility;
 import com.sevenmart.utilities.WaitUtility;
@@ -22,8 +20,10 @@ public class LoginPage {
 	HomePage homepage;
 	FileInputStream fileinputstream;
 
+	@CacheLookup
 	@FindBy(xpath = "//input[@name='username']")
 	private WebElement userNameField;
+	@CacheLookup
 	@FindBy(xpath = "//input[@name='password']")
 	private WebElement passwordField;
 	@FindBy(xpath = "//button[@type='submit']")
@@ -31,7 +31,7 @@ public class LoginPage {
 	@FindBy(xpath = "//input[@id='remember']")
 	private WebElement rememberMeCheckBox;
 	@FindBy(xpath = "//div[@class='alert alert-danger alert-dismissible']")
-	private WebElement error_Message;
+	private WebElement errorMessage;
 
 	public LoginPage(WebDriver driver) {
 		PageFactory.initElements(driver, this);
@@ -63,7 +63,12 @@ public class LoginPage {
 
 	public String getErrorMessage() {
 		generalutility = new GeneralUtility(driver);
-		return generalutility.getTextOfElement(error_Message);
+		return generalutility.getTextOfElement(errorMessage);
+	}
+	
+	public boolean selectCheckbox() {
+		generalutility = new GeneralUtility(driver);
+		return generalutility.is_Selected(rememberMeCheckBox);
 	}
 
 	public void login() {
@@ -75,9 +80,14 @@ public class LoginPage {
 	}
 
 	public void login(String userName, String passWord) {
-		//using parameter
 		enterUserName(userName);
 		enterPassWord(passWord);
 		clickOnSignInButton();
 	}
+	
+	public void checkboxWithoutLogin()
+	{
+		selectCheckbox();
+	}
+
 }

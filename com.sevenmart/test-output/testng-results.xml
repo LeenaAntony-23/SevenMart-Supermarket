@@ -1,32 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="5" total="6" passed="1" failed="0" skipped="0">
+<testng-results ignored="7" total="8" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-08-05T10:57:51 IST" name="Default suite" finished-at="2023-08-05T10:59:27 IST" duration-ms="95996">
+  <suite started-at="2023-08-16T01:32:23 IST" name="Default suite" finished-at="2023-08-16T01:32:35 IST" duration-ms="11851">
     <groups>
     </groups>
-    <test started-at="2023-08-05T10:57:51 IST" name="Default test" finished-at="2023-08-05T10:59:27 IST" duration-ms="95996">
-      <class name="com.sevenmart.tests.ManageDeliveryBoyTest">
-        <test-method is-config="true" signature="launchBrowser()[pri:0, instance:com.sevenmart.tests.ManageDeliveryBoyTest@45c7e403]" started-at="2023-08-05T10:57:51 IST" name="launchBrowser" finished-at="2023-08-05T10:59:24 IST" duration-ms="92979" status="PASS">
+    <test started-at="2023-08-16T01:32:23 IST" name="Default test" finished-at="2023-08-16T01:32:35 IST" duration-ms="11851">
+      <class name="com.sevenmart.tests.AdminUsersTest">
+        <test-method is-config="true" signature="launchBrowser()[pri:0, instance:com.sevenmart.tests.AdminUsersTest@1ff4931d]" started-at="2023-08-16T01:32:25 IST" name="launchBrowser" finished-at="2023-08-16T01:32:32 IST" duration-ms="7267" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- launchBrowser -->
-        <test-method signature="verify_deleteDeliveryBoyDetails()[pri:0, instance:com.sevenmart.tests.ManageDeliveryBoyTest@45c7e403]" started-at="2023-08-05T10:59:24 IST" name="verify_deleteDeliveryBoyDetails" finished-at="2023-08-05T10:59:27 IST" duration-ms="2843" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verify_deleteDeliveryBoyDetails -->
-        <test-method is-config="true" signature="terminateSession(org.testng.ITestResult)[pri:0, instance:com.sevenmart.tests.ManageDeliveryBoyTest@45c7e403]" started-at="2023-08-05T10:59:27 IST" name="terminateSession" finished-at="2023-08-05T10:59:27 IST" duration-ms="4" status="PASS">
+        <test-method signature="verify_ExistingUser(java.lang.String)[pri:0, instance:com.sevenmart.tests.AdminUsersTest@1ff4931d]" started-at="2023-08-16T01:32:32 IST" name="verify_ExistingUser" data-provider="Existinguser" finished-at="2023-08-16T01:32:35 IST" duration-ms="2994" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=verify_deleteDeliveryBoyDetails status=SUCCESS method=ManageDeliveryBoyTest.verify_deleteDeliveryBoyDetails()[pri:0, instance:com.sevenmart.tests.ManageDeliveryBoyTest@45c7e403] output={null}]]]>
+                <![CDATA[Sreeram]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verify_ExistingUser -->
+        <test-method is-config="true" signature="terminateSession(org.testng.ITestResult)[pri:0, instance:com.sevenmart.tests.AdminUsersTest@1ff4931d]" started-at="2023-08-16T01:32:35 IST" name="terminateSession" finished-at="2023-08-16T01:32:35 IST" duration-ms="6" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=verify_ExistingUser status=SUCCESS method=AdminUsersTest.verify_ExistingUser(java.lang.String)[pri:0, instance:com.sevenmart.tests.AdminUsersTest@1ff4931d] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- terminateSession -->
-      </class> <!-- com.sevenmart.tests.ManageDeliveryBoyTest -->
+      </class> <!-- com.sevenmart.tests.AdminUsersTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

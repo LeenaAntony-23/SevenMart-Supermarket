@@ -50,7 +50,7 @@
               <ul>
                 <li>
                   <a href="#" panel-name="test-xml-Default_suite" class="navigator-link ">
-                    <span>C:\Users\user\AppData\Local\Temp\testng-eclipse-775900819\testng-customsuite.xml</span>
+                    <span>C:\Users\user\AppData\Local\Temp\testng-eclipse--331849444\testng-customsuite.xml</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -103,7 +103,7 @@
                     <div class="method-list-content passed suite-Default_suite">
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Default_suite" title="com.sevenmart.tests.ManageDeliveryBoyTest" class="method navigator-link" hash-for-method="verify_deleteDeliveryBoyDetails">verify_deleteDeliveryBoyDetails</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Default_suite" title="com.sevenmart.tests.AdminUsersTest" class="method navigator-link" hash-for-method="verify_ExistingUser(Sreeram)">verify_ExistingUser(Sreeram)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content passed suite-Default_suite -->
@@ -121,14 +121,15 @@
           <div class="suite-Default_suite-class-passed">
             <div class="main-panel-header rounded-window-top">
               <img src="passed.png"/>
-              <span class="class-name">com.sevenmart.tests.ManageDeliveryBoyTest</span>
+              <span class="class-name">com.sevenmart.tests.AdminUsersTest</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="verify_deleteDeliveryBoyDetails">
-                  </a> <!-- verify_deleteDeliveryBoyDetails -->
-                  <span class="method-name">verify_deleteDeliveryBoyDetails</span>
+                  <a name="verify_ExistingUser(Sreeram)">
+                  </a> <!-- verify_ExistingUser(Sreeram) -->
+                  <span class="method-name">verify_ExistingUser</span>
+                  <span class="parameters">(Sreeram)</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
@@ -136,7 +137,7 @@
         </div> <!-- panel Default_suite -->
         <div panel-name="test-xml-Default_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">C:\Users\user\AppData\Local\Temp\testng-eclipse-775900819\testng-customsuite.xml</span>
+            <span class="header-content">C:\Users\user\AppData\Local\Temp\testng-eclipse--331849444\testng-customsuite.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
@@ -145,11 +146,11 @@
 &lt;suite name=&quot;Default suite&quot; guice-stage=&quot;DEVELOPMENT&quot;&gt;
   &lt;test thread-count=&quot;5&quot; name=&quot;Default test&quot; verbose=&quot;2&quot;&gt;
     &lt;classes&gt;
-      &lt;class name=&quot;com.sevenmart.tests.ManageDeliveryBoyTest&quot;&gt;
+      &lt;class name=&quot;com.sevenmart.tests.AdminUsersTest&quot;&gt;
         &lt;methods&gt;
-          &lt;include name=&quot;verify_deleteDeliveryBoyDetails&quot;/&gt;
+          &lt;include name=&quot;verify_ExistingUser&quot;/&gt;
         &lt;/methods&gt;
-      &lt;/class&gt; &lt;!-- com.sevenmart.tests.ManageDeliveryBoyTest --&gt;
+      &lt;/class&gt; &lt;!-- com.sevenmart.tests.AdminUsersTest --&gt;
     &lt;/classes&gt;
   &lt;/test&gt; &lt;!-- Default test --&gt;
 &lt;/suite&gt; &lt;!-- Default suite --&gt;
@@ -191,9 +192,9 @@ data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
 data.addRows(1);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'verify_deleteDeliveryBoyDetails')
-data.setCell(0, 2, 'com.sevenmart.tests.ManageDeliveryBoyTest')
-data.setCell(0, 3, 2843);
+data.setCell(0, 1, 'verify_ExistingUser')
+data.setCell(0, 2, 'com.sevenmart.tests.AdminUsersTest')
+data.setCell(0, 3, 2994);
 window.suiteTableData['Default_suite']= { tableData: data, tableDiv: 'times-div-Default_suite'}
 return data;
 }
@@ -213,21 +214,25 @@ return data;
         </div> <!-- panel -->
         <div panel-name="ignored-methods-Default_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">5 ignored methods</span>
+            <span class="header-content">7 ignored methods</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="ignored-class-div">
-              <span class="ignored-class-name">com.sevenmart.tests.ManageDeliveryBoyTest</span>
+              <span class="ignored-class-name">com.sevenmart.tests.AdminUsersTest</span>
               <div class="ignored-methods-div">
-                <span class="ignored-method-name">verify_ManageDeliveryBoyPageHeading</span>
+                <span class="ignored-method-name">verify_NewAdminCreation</span>
                 <br/>
-                <span class="ignored-method-name">verify_ExistingUserByName</span>
+                <span class="ignored-method-name">verify_AdminUsersPageHeading</span>
                 <br/>
-                <span class="ignored-method-name">verify_NonExistingDeliveryBoy</span>
+                <span class="ignored-method-name">verifyNewPartnerCreation</span>
                 <br/>
-                <span class="ignored-method-name">verify_successAlertForNewDeliveryBoy</span>
+                <span class="ignored-method-name">verifyNewStaffCreation</span>
                 <br/>
-                <span class="ignored-method-name">verify_editDeliveryBoyDetails</span>
+                <span class="ignored-method-name">verifyNewDeliveryBoyCreation</span>
+                <br/>
+                <span class="ignored-method-name">verify_nonExistingUser</span>
+                <br/>
+                <span class="ignored-method-name">verify_DeleteUser</span>
                 <br/>
               </div> <!-- ignored-methods-div -->
             </div> <!-- ignored-class-div -->
@@ -239,18 +244,18 @@ return data;
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="chronological-class">
-              <div class="chronological-class-name">com.sevenmart.tests.ManageDeliveryBoyTest</div> <!-- chronological-class-name -->
+              <div class="chronological-class-name">com.sevenmart.tests.AdminUsersTest</div> <!-- chronological-class-name -->
               <div class="configuration-method before">
                 <span class="method-name">launchBrowser</span>
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
-                <span class="method-name">verify_deleteDeliveryBoyDetails</span>
-                <span class="method-start">92991 ms</span>
+                <span class="method-name">verify_ExistingUser(Sreeram)</span>
+                <span class="method-start">7270 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
-                <span class="method-name">terminateSession([TestResult name=verify_deleteDeliveryBoyDetails status=SUCCESS method=ManageDeliveryBoyTest.verify_...)</span>
-                <span class="method-start">95839 ms</span>
+                <span class="method-name">terminateSession([TestResult name=verify_ExistingUser status=SUCCESS method=AdminUsersTest.verify_ExistingUser(java.l...)</span>
+                <span class="method-start">10273 ms</span>
               </div> <!-- configuration-method after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

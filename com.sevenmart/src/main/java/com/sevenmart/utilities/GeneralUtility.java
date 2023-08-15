@@ -4,7 +4,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.By.ByXPath;
 import org.openqa.selenium.WebDriver;
@@ -25,10 +24,10 @@ public class GeneralUtility {
 		return element.getText();
 	}
 	
-	public List<String> getTextOfElements(String xpath) {// method for storing and iterating webelements
+	public List<String> getTextOfElements(String xpath) {
 
-		List<String> data = new ArrayList<String>();// for storing
-		List<WebElement> elements = driver.findElements(By.xpath(xpath));// for getting elements in a list
+		List<String> data = new ArrayList<String>();
+		List<WebElement> elements = driver.findElements(By.xpath(xpath));
 		for (WebElement iterator : elements) {
 			data.add(iterator.getText());
 
@@ -37,9 +36,9 @@ public class GeneralUtility {
 
 	}
 
-	public List<String> getTextOfElements(List<WebElement> element) {// method for storing and iterating webelements
-																		// hardcoding
-		List<String> data = new ArrayList<String>();// for storing
+	public List<String> getTextOfElements(List<WebElement> element) {
+																		
+		List<String> data = new ArrayList<String>();
 
 		for (WebElement iterator : element) {
 			data.add(iterator.getText());
@@ -70,13 +69,14 @@ public class GeneralUtility {
 	public Boolean is_Selected(WebElement element) {
 		return element.isSelected();
 	}
+	
 	public static String getRandomName() {
 		
 		 Faker faker=new Faker();
 		 String firstName = faker.name().firstName();
 		 return firstName;
-		
 	}
+	
 	public static String getTimeStamp() {
 		String timeStamp = new SimpleDateFormat("dd_MM_yyyy_hh_mm_ss").format(new Date());
 		return timeStamp;

@@ -12,7 +12,7 @@
 		</groups>
 		<classes>
 			<class name="com.sevenmart.tests.LoginTest"></class>
-			<class name="com.sevenmart.tests.ManageDeliveryBoyTest"></class>
+		<class name="com.sevenmart.tests.ManageDeliveryBoyTest"></class>
 		</classes>
 
 	</test>

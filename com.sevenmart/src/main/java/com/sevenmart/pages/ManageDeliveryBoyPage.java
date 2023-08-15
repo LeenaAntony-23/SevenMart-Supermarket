@@ -5,7 +5,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
 import com.sevenmart.utilities.ExcelUtility;
 import com.sevenmart.utilities.GeneralUtility;
 import com.sevenmart.utilities.PageUility;
@@ -77,8 +76,6 @@ public class ManageDeliveryBoyPage {
 	}
 
 	public void enterName(String name) {
-		// javascriptexecutor=(JavascriptExecutor) driver;
-		// javascriptexecutor.executeScript("arguments[0].scrollIntoView();",name);
 		nameField.sendKeys(name);
 	}
 
@@ -119,11 +116,16 @@ public class ManageDeliveryBoyPage {
 	}
 
 	public void clickOnEditDeliveryBoyButton() {
-		editDeliveryBoyDetailsLink.click();
+		pageutility = new PageUility(driver);
+		pageutility.javaScriptExecutorScrollToElement(editDeliveryBoyDetailsLink);
+		pageutility.javaScriptScrollandclick(editDeliveryBoyDetailsLink);
+
 	}
 
 	public void clickOnDeleteDeliveryBoyButton() {
-		deleteButton.click();
+		pageutility = new PageUility(driver);
+		pageutility.javaScriptExecutorScrollToElement(deleteButton);
+		pageutility.javaScriptScrollandclick(deleteButton);
 	}
 
 	public void clickOnUpdateButton() {
@@ -178,59 +180,41 @@ public class ManageDeliveryBoyPage {
 		loginpage.login();
 		clickOnManageDeliveryBoyLink();
 		clickOnNewButton();
-		excelutility.setExcelFile("DeliveryBoyData", "NewDeliveryBoy");
-		name = excelutility.getCellData(1, 0);
-		email = excelutility.getCellData(1, 1);
-		phoneNumber = excelutility.getCellData(1, 2);
-		address = excelutility.getCellData(1, 3);
-		userName = excelutility.getCellData(1, 4);
-		passsword = excelutility.getCellData(1, 5);
 		enterName(name);
 		enterEmailID(email);
 		enterPhoneNumber(phoneNumber);
 		enterAddress(address);
-		enterUserName(userName);
+		enterUserName(userName + " " + GeneralUtility.getRandomName());
 		enterPassword(passsword);
 		clickOnSaveButton();
 	}
 
-	public void searchExistingDeliveryBoy() {
+	public void searchExistingDeliveryBoy(String searchName) {
 		loginpage = new LoginPage(driver);
 		loginpage.login();
 		clickOnManageDeliveryBoyLink();
 		clickOnSearchButton();
-		excelutility.setExcelFile("DeliveryBoyData", "SearchExistingDeliveryBoy");
-		String name = excelutility.getCellData(1, 0);
-		searchByName(name);
+		searchByName(searchName);
 		clickOnSearchListSearchButton();
 	}
 
-	public void searchNonExistingDeliveryBoy() {
+	public void searchNonExistingDeliveryBoy(String name) {
 		loginpage = new LoginPage(driver);
 		loginpage.login();
 		clickOnManageDeliveryBoyLink();
 		clickOnSearchButton();
-		excelutility.setExcelFile("DeliveryBoyData", "SearchNonExistingDeliveryBoy");
-		String name = excelutility.getCellData(1, 0);
 		searchByName(name);
 		clickOnSearchListSearchButton();
 
 	}
 
-	public void editDeliveryBoyName(String name) {
-		loginpage = new LoginPage(driver);
-		loginpage.login();
-		clickOnManageDeliveryBoyLink();
+	public void editDeliveryBoyName() {
 		clickOnEditDeliveryBoyButton();
-		enterName(name + " " + GeneralUtility.getRandomName());
+		enterName(" " + GeneralUtility.getRandomName());
 		clickOnUpdateButton();
 	}
 
-	public void deleteDeliveryBoyName(String name) {
-		pageutility = new PageUility(driver);
-		loginpage = new LoginPage(driver);
-		loginpage.login();
-		clickOnManageDeliveryBoyLink();
+	public void deleteDeliveryBoyName() {
 		clickOnDeleteDeliveryBoyButton();
 		pageutility.acceptAlert();
 	}
