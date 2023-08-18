@@ -1,39 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="7" total="8" passed="1" failed="0" skipped="0">
+<testng-results ignored="6" total="9" passed="3" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-08-16T01:32:23 IST" name="Default suite" finished-at="2023-08-16T01:32:35 IST" duration-ms="11851">
+  <suite started-at="2023-08-16T08:17:15 IST" name="group test" finished-at="2023-08-16T08:17:54 IST" duration-ms="38576">
     <groups>
+      <group name="smoke">
+        <method signature="LoginTest.verify_CheckboxwithoutLogin()[pri:0, instance:com.sevenmart.tests.LoginTest@b2c9a9c]" name="verify_CheckboxwithoutLogin" class="com.sevenmart.tests.LoginTest"/>
+        <method signature="LoginTest.verify_invalidLoginAlertMessageUsingExcel()[pri:0, instance:com.sevenmart.tests.LoginTest@b2c9a9c]" name="verify_invalidLoginAlertMessageUsingExcel" class="com.sevenmart.tests.LoginTest"/>
+        <method signature="ManageDeliveryBoyTest.verify_ManageDeliveryBoyPageHeading()[pri:0, instance:com.sevenmart.tests.ManageDeliveryBoyTest@65d09a04]" name="verify_ManageDeliveryBoyPageHeading" class="com.sevenmart.tests.ManageDeliveryBoyTest"/>
+      </group> <!-- smoke -->
     </groups>
-    <test started-at="2023-08-16T01:32:23 IST" name="Default test" finished-at="2023-08-16T01:32:35 IST" duration-ms="11851">
-      <class name="com.sevenmart.tests.AdminUsersTest">
-        <test-method is-config="true" signature="launchBrowser()[pri:0, instance:com.sevenmart.tests.AdminUsersTest@1ff4931d]" started-at="2023-08-16T01:32:25 IST" name="launchBrowser" finished-at="2023-08-16T01:32:32 IST" duration-ms="7267" status="PASS">
+    <test started-at="2023-08-16T08:17:15 IST" name="group tests" finished-at="2023-08-16T08:17:54 IST" duration-ms="38576">
+      <class name="com.sevenmart.tests.ManageDeliveryBoyTest">
+        <test-method is-config="true" signature="launchBrowser()[pri:0, instance:com.sevenmart.tests.ManageDeliveryBoyTest@65d09a04]" started-at="2023-08-16T08:17:42 IST" name="launchBrowser" finished-at="2023-08-16T08:17:48 IST" duration-ms="5925" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- launchBrowser -->
-        <test-method signature="verify_ExistingUser(java.lang.String)[pri:0, instance:com.sevenmart.tests.AdminUsersTest@1ff4931d]" started-at="2023-08-16T01:32:32 IST" name="verify_ExistingUser" data-provider="Existinguser" finished-at="2023-08-16T01:32:35 IST" duration-ms="2994" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[Sreeram]]>
-              </value>
-            </param>
-          </params>
+        <test-method signature="verify_ManageDeliveryBoyPageHeading()[pri:0, instance:com.sevenmart.tests.ManageDeliveryBoyTest@65d09a04]" started-at="2023-08-16T08:17:48 IST" name="verify_ManageDeliveryBoyPageHeading" finished-at="2023-08-16T08:17:54 IST" duration-ms="6248" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verify_ExistingUser -->
-        <test-method is-config="true" signature="terminateSession(org.testng.ITestResult)[pri:0, instance:com.sevenmart.tests.AdminUsersTest@1ff4931d]" started-at="2023-08-16T01:32:35 IST" name="terminateSession" finished-at="2023-08-16T01:32:35 IST" duration-ms="6" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=verify_ExistingUser status=SUCCESS method=AdminUsersTest.verify_ExistingUser(java.lang.String)[pri:0, instance:com.sevenmart.tests.AdminUsersTest@1ff4931d] output={null}]]]>
-              </value>
-            </param>
-          </params>
+        </test-method> <!-- verify_ManageDeliveryBoyPageHeading -->
+      </class> <!-- com.sevenmart.tests.ManageDeliveryBoyTest -->
+      <class name="com.sevenmart.tests.LoginTest">
+        <test-method is-config="true" signature="launchBrowser()[pri:0, instance:com.sevenmart.tests.LoginTest@b2c9a9c]" started-at="2023-08-16T08:17:16 IST" name="launchBrowser" finished-at="2023-08-16T08:17:29 IST" duration-ms="13080" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- terminateSession -->
-      </class> <!-- com.sevenmart.tests.AdminUsersTest -->
-    </test> <!-- Default test -->
-  </suite> <!-- Default suite -->
+        </test-method> <!-- launchBrowser -->
+        <test-method signature="verify_CheckboxwithoutLogin()[pri:0, instance:com.sevenmart.tests.LoginTest@b2c9a9c]" started-at="2023-08-16T08:17:29 IST" name="verify_CheckboxwithoutLogin" finished-at="2023-08-16T08:17:29 IST" duration-ms="273" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verify_CheckboxwithoutLogin -->
+        <test-method is-config="true" signature="launchBrowser()[pri:0, instance:com.sevenmart.tests.LoginTest@b2c9a9c]" started-at="2023-08-16T08:17:29 IST" name="launchBrowser" finished-at="2023-08-16T08:17:38 IST" duration-ms="8333" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchBrowser -->
+        <test-method signature="verify_invalidLoginAlertMessageUsingExcel()[pri:0, instance:com.sevenmart.tests.LoginTest@b2c9a9c]" started-at="2023-08-16T08:17:38 IST" name="verify_invalidLoginAlertMessageUsingExcel" finished-at="2023-08-16T08:17:42 IST" duration-ms="4288" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verify_invalidLoginAlertMessageUsingExcel -->
+      </class> <!-- com.sevenmart.tests.LoginTest -->
+    </test> <!-- group tests -->
+  </suite> <!-- group test -->
 </testng-results>
